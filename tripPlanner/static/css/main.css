@@ -1,0 +1,175 @@
+html{
+    background-color: #111;
+}
+
+
+.container {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    grid-template-rows: 0.4fr 1.9fr 0.7fr;
+    grid-auto-columns: 1fr;
+    gap: 10px 10px;
+    grid-auto-flow: row;
+    justify-content: end;
+    align-content: center;
+    justify-items: end;
+    align-items: end;
+    grid-template-areas:
+      "name rate"
+      "desc image"
+      "scrollimg scrollimg";
+}
+
+.name {
+    width: 97.5%;
+    height: 50px;
+    border: 1px solid;
+    grid-area: name;
+    background-color: #333;
+    border-radius: 10px;
+    color: aliceblue;
+    font-size: 38px;
+    padding: 10px;
+}
+
+.rate {
+    width: 100%;
+    height: 50px;
+    grid-area: rate;
+}
+
+.mainimg {
+    width: 100%;
+    height: 425px;
+    border: 1px solid;
+    grid-area: image;
+    background-color: #333;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.mainimg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.desc {
+    width: 97.5%;
+    height: 405px;
+    border: 1px solid;
+    grid-area: desc;
+    background-color: #333;
+    border-radius: 10px;
+    color: aliceblue;
+    font-size: 22px;
+    padding: 10px;
+    overflow: scroll;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+.scrollimg {
+    width: 98.5%;
+    height: 175px;
+    border: 1px solid;
+    grid-area: scrollimg;
+    background-color: #333;
+    border-radius: 10px;
+    color: aliceblue;
+    overflow-x: auto;
+    padding: 10px;
+    display: flex;
+}
+
+.loc {
+    position: relative;
+    height: 165px;
+    width: 155px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.image {
+    opacity: 1;
+    display: block;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.loc img{
+    height: 165px;
+    width: 155px;
+    object-fit: cover;
+    align-items: center;
+    justify-items: left;
+}
+
+.loc:hover .image {
+    opacity: 0.3;
+}
+  
+.loc:hover .middle {
+    opacity: 1;
+}
+
+.text {
+    --button_radius: 0.75em;
+    --button_color: #03a9f4;
+    --button_outline_color: #000000;
+    color: #000000;
+    font-size: 15px;
+    background: none;
+    border-radius: 10px;
+    background: var(--button_outline_color);
+}
+
+.rate button {
+    /* Variables */
+    --button_radius: 0.75em;
+    --button_color: #03a9f4;
+    --button_outline_color: #000000;
+    font-size: 17px;
+    font-weight: bold;
+    border: none;
+    border-radius: var(--button_radius);
+    background: var(--button_outline_color);
+    float: right;
+    width: 230px;
+}
+
+.button_top {
+    display: block;
+    box-sizing: border-box;
+    border: 2px solid var(--button_outline_color);
+    border-radius: var(--button_radius);
+    padding: 0.75em 1.5em;
+    background: var(--button_color);
+    color: var(--button_outline_color);
+    transform: translateY(-0.2em);
+    transition: transform 0.1s ease;
+}
+
+button:hover .button_top {
+    /* Pull the button upwards when hovered */
+    transform: translateY(-0.33em);
+    --button_color: #0284c0;
+}
+
+button:active .button_top {
+    /* Push the button downwards when pressed */
+    transform: translateY(0);
+}

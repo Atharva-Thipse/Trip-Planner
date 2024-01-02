@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/rating.css' %}">
+    <link rel="stylesheet" href="https://afeld.github.io/emoji-css/emoji.css">
+    <script src="{% static 'js/rating.js' %}"></script>
+</head>
+<body>
+    <form class="rating-wrapper" action="{% url 'add' %}" method="post">
+      <input type="hidden" name="locationId" value="{{ LocationId }}" id="location">
+
+        <label class="rating-label">How helpful was this?</label>
+        <div class="ratingItemList">
+        
+          <input id="rating-1-2" class="rating rating-1" type="radio" value="1" name="rating">
+          <label class="rating rating-1" for="rating-1-2"><i class="em em-angry"></i></i></label>
+          
+          <input id="rating-2-2" class="rating rating-2" type="radio" value="2" name="rating">
+          <label class="rating rating-2" for="rating-2-2"><i class="em em-disappointed"></i></label>
+      
+          <input id="rating-3-2" class="rating rating-3" type="radio" value="3" name="rating">
+          <label class="rating rating-3" for="rating-3-2"><i class="em em-expressionless"></i></label>
+      
+          <input id="rating-4-2" class="rating rating-4" type="radio" value="4" name="rating">
+          <label class="rating rating-4" for="rating-4-2"><i class="em em-grinning"></i></label>
+      
+          <input id="rating-5-2" class="rating rating-5" type="radio" value="5" name="rating">
+          <label class="rating rating-5" for="rating-5-2"><i class="em em-star-struck"></i></label>
+        </div>
+        <div class="feedback">
+          <textarea placeholder="Share your Experience..." name="review"></textarea>
+          <button class="submit" type="submit" value="rates" name="addrecord" id="rate">Send Your Feedback</button>
+        </div>
+    </form>
+    {% for x in mymembers %}
+    <div class="testimonial">
+      <div class="card">
+        <div class="layer"></div>
+        <div class="content">
+          <div class="image">
+            <img src="https://cdn2.iconfinder.com/data/icons/avatar-2/512/oscar_boy-128.png"       alt="avatar"> 
+          </div>
+          <p>Rating:</p>
+          <p>{{ x.rating }}/5</p>
+          <p>Review:</p>
+          <p>{{ x.review }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+</body>
+</html>
